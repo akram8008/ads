@@ -1,0 +1,20 @@
+{"level":"info","ts":1660460333.2743473,"caller":"internal/internal.go:12","msg":"&{localhost 8080 {localhost 5432 postgres 123456 postgres} super_secret}"}
+{"level":"info","ts":1660482105.8380282,"caller":"db/db.go:43","msg":"Database - successfully connected!"}
+{"level":"info","ts":1660482148.4266088,"caller":"db/db.go:43","msg":"Database - successfully connected!"}
+{"level":"info","ts":1660482359.047494,"caller":"db/db.go:43","msg":"Database - successfully connected!"}
+{"level":"info","ts":1660482392.053669,"caller":"db/db.go:43","msg":"Database - successfully connected!"}
+{"level":"info","ts":1660482392.054184,"caller":"db/db.go:51","msg":"tmp:  1"}
+{"level":"info","ts":1660482539.3734088,"caller":"db/db.go:43","msg":"Database - successfully connected!"}
+{"level":"info","ts":1660482539.3739321,"caller":"db/db.go:51","msg":"tmp:  1"}
+{"level":"info","ts":1660482929.6766648,"caller":"db/db.go:43","msg":"Database - successfully connected!"}
+{"level":"info","ts":1660482929.6770387,"caller":"db/db.go:51","msg":"tmp:  1"}
+{"level":"info","ts":1660482961.7427876,"caller":"db/db.go:43","msg":"Database - successfully connected!"}
+{"level":"info","ts":1660482961.7432134,"caller":"db/db.go:51","msg":"tmp:  1"}
+{"level":"info","ts":1660483133.1433764,"caller":"db/db.go:43","msg":"Database - successfully connected!"}
+{"level":"info","ts":1660483133.1437712,"caller":"db/db.go:51","msg":"tmp:  1"}
+{"level":"info","ts":1660483139.5863893,"caller":"db/db.go:43","msg":"Database - successfully connected!"}
+{"level":"info","ts":1660483139.5867956,"caller":"db/db.go:51","msg":"tmp:  1"}
+{"level":"info","ts":1660486174.449213,"caller":"db/db.go:43","msg":"Database - successfully connected!"}
+{"level":"info","ts":1660486174.4507577,"caller":"db/db.go:51","msg":"tmp:  1"}
+{"level":"info","ts":1660486561.0216925,"caller":"db/db.go:43","msg":"Database - successfully connected!"}
+{"level":"info","ts":1660486561.02312,"caller":"db/db.go:51","msg":"tmp:  1"}

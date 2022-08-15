@@ -15,7 +15,7 @@ func Up() {
 	srv := server.New(server.Params{
 		Config:   *cfg,
 		Logger:   logger,
-		Handlers: ads.New(),
+		Handlers: ads.New(ads.Params{Logger: logger}),
 	})
 
 	logger.Logger().Fatal(srv.ListenAndServe())

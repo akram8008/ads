@@ -16,7 +16,7 @@ func TestRepository_GetByID(t *testing.T) {
 
 	var repo Repository = &repository{db: db, logger: logger.New([]string{})}
 
-	ad, err := repo.GetByID("1")
+	ad, err := repo.GetByID(1)
 	assert.NoError(t, err)
 
 	assert.Equal(t, "some", ad.Name)

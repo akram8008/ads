@@ -2,6 +2,7 @@ package db
 
 import (
 	"ads/internal/model"
+	"ads/internal/pkg/logger"
 	"database/sql"
 	"fmt"
 	_ "github.com/lib/pq"
@@ -14,7 +15,8 @@ type Database interface {
 }
 
 type database struct {
-	db *sql.DB
+	db     *sql.DB
+	logger logger.Logger
 }
 
 func (d *database) Connection() *sql.DB {
@@ -53,6 +55,10 @@ func Connect(cfg *model.Config, logger *zap.SugaredLogger) {
 	dbConn = db
 }
 
-func New() Database {
-	return &database{db: dbConn}
+type Params struct {
+	Logger logger.Logger
+}
+
+func New(p Params) Database {
+	return &database{db: dbConn, logger: p.Logger}
 }

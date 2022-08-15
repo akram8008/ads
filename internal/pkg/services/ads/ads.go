@@ -2,22 +2,29 @@ package ads
 
 import (
 	"ads/internal/model"
+	"ads/internal/pkg/logger"
 	"ads/internal/pkg/repositories/ads"
 )
 
 type Services interface {
 	Create()
 	GetAll()
-	GetByID(id string) (model.Ads, error)
+	GetByID(id uint64) (model.Ads, error)
 }
 
 type services struct {
-	repo ads.Repository
+	repo   ads.Repository
+	logger logger.Logger
 }
 
-func New() Services {
+type Params struct {
+	Logger logger.Logger
+}
+
+func New(p Params) Services {
 	return &services{
-		repo: ads.New(),
+		repo:   ads.New(ads.Params{Logger: p.Logger}),
+		logger: p.Logger,
 	}
 }
 
@@ -32,6 +39,6 @@ func (s *services) GetAll() {
 }
 
 // GetByID gets ad by its ID
-func (s *services) GetByID(id string) (model.Ads, error) {
+func (s *services) GetByID(id uint64) (model.Ads, error) {
 	return s.repo.GetByID(id)
 }

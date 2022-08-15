@@ -14,7 +14,7 @@ func TestHandlers_GetByID(t *testing.T) {
 	h := handlers{adsService: &m}
 
 	m.On("GetByID", "1").Return(model.Ads{
-		ID:   "1",
+		ID:   1,
 		Name: "some",
 	}, nil)
 

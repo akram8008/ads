@@ -18,3 +18,77 @@
 {"level":"info","ts":1660486174.4507577,"caller":"db/db.go:51","msg":"tmp:  1"}
 {"level":"info","ts":1660486561.0216925,"caller":"db/db.go:43","msg":"Database - successfully connected!"}
 {"level":"info","ts":1660486561.02312,"caller":"db/db.go:51","msg":"tmp:  1"}
+{"level":"fatal","ts":1660560298.939765,"caller":"db/db.go:43","msg":"Can not ping to database:  dial tcp: lookup database: Temporary failure in name resolution"}
+{"level":"fatal","ts":1660560568.2221646,"caller":"db/db.go:43","msg":"Can not ping to database:  dial tcp: lookup database: Temporary failure in name resolution"}
+{"level":"fatal","ts":1660562072.5601385,"caller":"db/db.go:43","msg":"Can not ping to database:  dial tcp: lookup database: Temporary failure in name resolution"}
+{"level":"fatal","ts":1660562117.7358918,"caller":"internal/internal.go:21","msg":"listen tcp: lookup ads: Temporary failure in name resolution"}
+{"level":"info","ts":1660563221.0047052,"caller":"db/db.go:46","msg":"[Database] Successfully connected"}
+{"level":"info","ts":1660563313.4564083,"caller":"db/db.go:46","msg":"[Database] Successfully connected"}
+{"level":"info","ts":1660563313.4565487,"caller":"internal/internal.go:21","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"error","ts":1660563449.2686715,"caller":"ads/ads.go:54","msg":"pq: relation \"ads\" does not exist"}
+{"level":"fatal","ts":1660590264.0217872,"caller":"db/db.go:51","msg":"Can not migrate tables :  unsupported data type: &[]"}
+{"level":"info","ts":1660590734.0179455,"caller":"db/db.go:54","msg":"Database successfully connected"}
+{"level":"info","ts":1660590734.0181699,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"error","ts":1660590752.123432,"caller":"ads/ads.go:97","msg":"record not found"}
+{"level":"info","ts":1660590831.7454839,"caller":"db/db.go:54","msg":"Database successfully connected"}
+{"level":"info","ts":1660590831.7456415,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"error","ts":1660590840.5370116,"caller":"ads/ads.go:97","msg":"record not found"}
+{"level":"error","ts":1660590906.3829954,"caller":"ads/ads.go:97","msg":"record not found"}
+{"level":"info","ts":1660592505.5303895,"caller":"db/db.go:54","msg":"Database successfully connected"}
+{"level":"info","ts":1660592505.5309489,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"error","ts":1660592530.877878,"caller":"ads/ads.go:54","msg":"Bad Ads - model in body request: {0   []}"}
+{"level":"error","ts":1660592923.4467356,"caller":"ads/ads.go:54","msg":"Bad Ads - model in body request: {0 ads1  [http//one.com http//two.com http//three.com]}"}
+{"level":"info","ts":1660592931.7190876,"caller":"db/db.go:54","msg":"Database successfully connected"}
+{"level":"info","ts":1660592931.7192678,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"error","ts":1660592939.1065943,"caller":"ads/ads.go:54","msg":"Validation error. Bad Ads - model in body request: {0 ads1  [http//one.com http//two.com http//three.com]}"}
+{"level":"error","ts":1660592949.6217923,"caller":"ads/ads.go:54","msg":"Validation error. Bad Ads - model in body request: {0   []}"}
+{"level":"error","ts":1660592953.7689795,"caller":"ads/ads.go:48","msg":"invalid character 's' looking for beginning of object key string"}
+{"level":"error","ts":1660592967.352934,"caller":"ads/ads.go:54","msg":"Validation error. Bad Ads - model in body request: {0   []}"}
+{"level":"error","ts":1660592975.4261327,"caller":"ads/ads.go:54","msg":"Validation error. Bad Ads - model in body request: {0   [http//one.com http//two.com http//three.com]}"}
+{"level":"info","ts":1660593701.315235,"caller":"db/db.go:54","msg":"Database successfully connected"}
+{"level":"info","ts":1660593701.3161566,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"info","ts":1660600250.4389462,"caller":"db/db.go:55","msg":"Database successfully connected"}
+{"level":"info","ts":1660600250.4391587,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"error","ts":1660600258.8803844,"caller":"ads/ads.go:50","msg":"Validation error. Bad Ads - domain in body request: {<nil> <nil> 0xc000326240 <nil>} Error: no name provided"}
+{"level":"error","ts":1660600268.206476,"caller":"ads/ads.go:50","msg":"Validation error. Bad Ads - domain in body request: {0xc000020080 <nil> 0xc00000e030 <nil>} Error: no description provided"}
+{"level":"error","ts":1660600283.4693425,"caller":"ads/ads.go:50","msg":"Validation error. Bad Ads - domain in body request: {0xc00031f210 <nil> 0xc000326360 <nil>} Error: no description provided"}
+{"level":"error","ts":1660600296.182274,"caller":"ads/ads.go:50","msg":"Validation error. Bad Ads - domain in body request: {0xc000020130 0xc000020140 0xc00000e0c0 <nil>} Error: http//one.com doesn't look like a link"}
+{"level":"error","ts":1660600310.4002342,"caller":"ads/ads.go:50","msg":"Validation error. Bad Ads - domain in body request: {0xc000396040 0xc000396050 0xc000392018 <nil>} Error: http//two.com doesn't look like a link"}
+{"level":"error","ts":1660600315.4977853,"caller":"ads/ads.go:50","msg":"Validation error. Bad Ads - domain in body request: {0xc000396110 0xc000396120 0xc0003920a8 <nil>} Error: no price provided"}
+{"level":"error","ts":1660600333.1171176,"caller":"ads/ads.go:50","msg":"Validation error. Bad Ads - domain in body request: {0xc00031f2d0 0xc00031f2e0 0xc0003263c0 0xc00034a1d8} Error: price can not be negative"}
+{"level":"info","ts":1660601322.8807447,"caller":"db/db.go:55","msg":"Database successfully connected"}
+{"level":"info","ts":1660601322.880888,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"info","ts":1660601483.7500029,"caller":"db/db.go:55","msg":"Database successfully connected"}
+{"level":"info","ts":1660601483.750176,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"info","ts":1660601519.8631423,"caller":"db/db.go:55","msg":"Database successfully connected"}
+{"level":"info","ts":1660601519.8632839,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"info","ts":1660601535.3849115,"caller":"db/db.go:55","msg":"Database successfully connected"}
+{"level":"info","ts":1660601535.3851554,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"info","ts":1660601697.2991016,"caller":"db/db.go:55","msg":"Database successfully connected"}
+{"level":"info","ts":1660601697.2992666,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"error","ts":1660601711.6164525,"caller":"ads/ads.go:110","msg":"record not found"}
+{"level":"info","ts":1660609042.7123485,"caller":"db/db.go:55","msg":"Database successfully connected"}
+{"level":"info","ts":1660609042.7124786,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"info","ts":1660609164.9937005,"caller":"db/db.go:55","msg":"Database successfully connected"}
+{"level":"info","ts":1660609164.993828,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"info","ts":1660611293.290702,"caller":"db/db.go:55","msg":"Database successfully connected"}
+{"level":"info","ts":1660611293.290938,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"info","ts":1660611705.4994807,"caller":"db/db.go:55","msg":"Database successfully connected"}
+{"level":"info","ts":1660611705.4996316,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"info","ts":1660611844.5726156,"caller":"db/db.go:55","msg":"Database successfully connected"}
+{"level":"info","ts":1660611844.5727637,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"info","ts":1660611872.2640882,"caller":"db/db.go:55","msg":"Database successfully connected"}
+{"level":"info","ts":1660611872.2643077,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"error","ts":1660611875.201878,"caller":"ads/ads.go:100","msg":"ERROR: syntax error at or near \"created_date\" (SQLSTATE 42601)"}
+{"level":"info","ts":1660611904.7341154,"caller":"db/db.go:55","msg":"Database successfully connected"}
+{"level":"info","ts":1660611904.734269,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"info","ts":1660611958.6956208,"caller":"db/db.go:55","msg":"Database successfully connected"}
+{"level":"info","ts":1660611958.695738,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"info","ts":1660611987.757622,"caller":"db/db.go:55","msg":"Database successfully connected"}
+{"level":"info","ts":1660611987.7578092,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"info","ts":1660612007.3824186,"caller":"db/db.go:55","msg":"Database successfully connected"}
+{"level":"info","ts":1660612007.3826456,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"info","ts":1660612918.6357439,"caller":"db/db.go:55","msg":"Database successfully connected"}
+{"level":"info","ts":1660612918.6359167,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}
+{"level":"info","ts":1660613065.8587098,"caller":"db/db.go:55","msg":"Database successfully connected"}
+{"level":"info","ts":1660613065.858848,"caller":"internal/internal.go:26","msg":"[Server] listening on  {localhost 8081}"}

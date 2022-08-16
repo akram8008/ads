@@ -9,14 +9,20 @@ import (
 )
 
 func Up() {
+
 	cfg := config.New("configs/configs.json")
-	logger := logger.New([]string{"logs/ads.log"})
-	db.Connect(cfg, logger.Logger())
+
+	log := logger.New([]string{"logs/ads.log"})
+
+	db.Connect(cfg, log.Logger())
+	defer db.New(db.Params{}).CloseConnection()
+
 	srv := server.New(server.Params{
 		Config:   *cfg,
-		Logger:   logger,
-		Handlers: ads.New(ads.Params{Logger: logger}),
+		Logger:   log,
+		Handlers: ads.New(ads.Params{Logger: log}),
 	})
 
-	logger.Logger().Fatal(srv.ListenAndServe())
+	log.Logger().Infoln("[Server] listening on ", cfg.Sever)
+	log.Logger().Fatal(srv.ListenAndServe())
 }

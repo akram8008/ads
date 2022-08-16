@@ -1,56 +1,58 @@
 package db
 
 import (
-	"ads/internal/model"
-	"ads/internal/pkg/logger"
-	"database/sql"
+	"ads/internal/pkg/models"
 	"fmt"
-	_ "github.com/lib/pq"
 	"go.uber.org/zap"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
+
+	"ads/internal/domain"
+	"ads/internal/pkg/logger"
 )
 
 type Database interface {
-	Connection() *sql.DB
-	CloseConnection() error
+	Connection() *gorm.DB
+	CloseConnection()
 }
 
 type database struct {
-	db     *sql.DB
+	db     *gorm.DB
 	logger logger.Logger
 }
 
-func (d *database) Connection() *sql.DB {
+func (d *database) Connection() *gorm.DB {
 	return d.db
 }
 
-func (d *database) CloseConnection() error {
-	return d.db.Close()
+func (d *database) CloseConnection() {
+	db, err := d.db.DB()
+	if err != nil {
+		d.logger.Logger().Error(err)
+	}
+	err = db.Close()
+	if err != nil {
+		d.logger.Logger().Error(err)
+	}
 }
 
-var dbConn *sql.DB
+var dbConn *gorm.DB
 
-func Connect(cfg *model.Config, logger *zap.SugaredLogger) {
-	psqlInfo := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
+func Connect(cfg *domain.Config, logger *zap.SugaredLogger) {
+	dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=disable",
 		cfg.Database.Host, cfg.Database.Port, cfg.Database.User, cfg.Database.Password, cfg.Database.DbName)
-	db, err := sql.Open("postgres", psqlInfo)
+
+	db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
-		panic(err)
+		logger.Fatalln("Can not connect to database: ", err)
 	}
 
-	err = db.Ping()
+	err = db.AutoMigrate(&models.Ads{})
 	if err != nil {
-		panic(err)
+		logger.Fatalln("Can not migrate tables : ", err)
 	}
 
-	logger.Infoln("Database - successfully connected!")
-
-	var tmp string
-	err = db.QueryRow("select 'done'").Scan(&tmp)
-	if err != nil {
-		panic(err)
-	}
-
-	logger.Infoln("tmp: ", tmp)
+	logger.Infoln("Database successfully connected")
 
 	dbConn = db
 }

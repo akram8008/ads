@@ -1,15 +1,16 @@
 package ads
 
 import (
-	"ads/internal/model"
+	"ads/internal/domain"
 	"ads/internal/pkg/logger"
 	"ads/internal/pkg/repositories/ads"
+	"ads/internal/pkg/services/helper"
 )
 
 type Services interface {
-	Create()
-	GetAll()
-	GetByID(id uint64) (model.Ads, error)
+	Create(domain.AdsRequest) (uint64, error)
+	GetAll(int, string, string) ([]domain.AdsResponse, error)
+	GetByID(uint64, string) (domain.AdsResponse, error)
 }
 
 type services struct {
@@ -29,16 +30,30 @@ func New(p Params) Services {
 }
 
 // Create creates ad
-func (s *services) Create() {
-	s.repo.Create()
+func (s *services) Create(adsReq domain.AdsRequest) (uint64, error) {
+	return s.repo.Create(helper.ConvertFromAdsDomain(adsReq))
 }
 
 // GetAll gets all ads
-func (s *services) GetAll() {
-	s.repo.GetAll()
+func (s *services) GetAll(page int, price, createdDate string) ([]domain.AdsResponse, error) {
+	receivedAds, err := s.repo.GetAll(page, price, createdDate)
+	if err != nil {
+		return []domain.AdsResponse{}, err
+	}
+
+	var newAds []domain.AdsResponse
+	for _, item := range receivedAds {
+		newAds = append(newAds, helper.ConvertToAdsDomain(item, ""))
+	}
+
+	return newAds, nil
 }
 
 // GetByID gets ad by its ID
-func (s *services) GetByID(id uint64) (model.Ads, error) {
-	return s.repo.GetByID(id)
+func (s *services) GetByID(id uint64, fields string) (domain.AdsResponse, error) {
+	newAds, err := s.repo.GetByID(id)
+	if err != nil {
+		return domain.AdsResponse{}, err
+	}
+	return helper.ConvertToAdsDomain(newAds, fields), nil
 }

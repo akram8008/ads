@@ -1,20 +1,21 @@
 package ads
 
 import (
-	"ads/internal/model"
 	"ads/internal/pkg/db"
 	"ads/internal/pkg/logger"
-	"database/sql"
+	"ads/internal/pkg/models"
+	"fmt"
+	"gorm.io/gorm"
 )
 
 type Repository interface {
-	Create()
-	GetAll()
-	GetByID(id uint64) (model.Ads, error)
+	Create(models.Ads) (uint64, error)
+	GetAll(int, string, string) ([]models.Ads, error)
+	GetByID(uint64) (models.Ads, error)
 }
 
 type repository struct {
-	db     *sql.DB
+	db     *gorm.DB
 	logger logger.Logger
 }
 
@@ -30,32 +31,37 @@ func New(p Params) Repository {
 }
 
 // Create creates ad
-func (r *repository) Create() {
-
+func (r *repository) Create(ads models.Ads) (uint64, error) {
+	err := r.db.Create(&ads).Error
+	return ads.ID, err
 }
 
 // GetAll gets all ads
-func (r *repository) GetAll() {
+func (r *repository) GetAll(page int, price, createdDate string) ([]models.Ads, error) {
 
+	query := r.db.Model(&models.Ads{}).Offset((page - 1) * 10).Limit(10)
+
+	if price == "desc" || price == "asc" {
+		query = query.Order("price " + price)
+	}
+
+	if createdDate == "desc" || createdDate == "asc" {
+		query = query.Order("created_date " + createdDate)
+	}
+
+	var ads []models.Ads
+	err := query.Find(&ads).Error
+
+	fmt.Println(page, price, createdDate)
+
+	return ads, err
 }
 
 // GetByID gets ad by its ID
-func (r *repository) GetByID(id uint64) (model.Ads, error) {
-	query := `
-		SELECT *
-		FROM ads
-		WHERE id = $1
-	`
+func (r *repository) GetByID(id uint64) (models.Ads, error) {
+	var ads models.Ads
 
-	var ads model.Ads
+	err := r.db.Where("id = ?", id).First(&ads).Error
 
-	err := r.db.QueryRow(query, id).Scan(&ads)
-	if err != nil {
-		r.logger.Logger().Error(err)
-		return model.Ads{}, err
-	}
-
-	r.logger.Logger().Infof("[Database] Got ads with id: %d values: %v", id, ads)
-
-	return ads, nil
+	return ads, err
 }

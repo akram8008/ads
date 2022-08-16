@@ -1,10 +1,13 @@
-package model
+package domain
 
 type Config struct {
-	Host      string `json:"host"`
-	Port      string `json:"port"`
-	Database  DB     `json:"db"`
-	SecretKey string `json:"secret_key"`
+	Sever    Server `json:"server"`
+	Database DB     `json:"db"`
+}
+
+type Server struct {
+	Host string `json:"host"`
+	Port string `json:"port"`
 }
 
 type DB struct {

@@ -1,12 +1,13 @@
 {
-  "host": "ads",
-  "port": "8081",
-  "secret_key" : "super_secret",
+  "server": {
+    "host": "localhost",
+    "port": "8081"
+  },
   "db": {
-    "host" : "database",
-    "port" : "5432",
-    "user" : "postgres",
-    "password" : "q123",
-    "dbname" : "postgres"
+    "host": "localhost",
+    "port": "5432",
+    "user": "postgres",
+    "password": "q123",
+    "dbname": "postgres"
   }
 }

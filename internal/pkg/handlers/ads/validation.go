@@ -28,6 +28,9 @@ func (h *handlers) validateAds(newAdsReq domain.AdsRequest) error {
 		return errors.New("links limited to 3 links")
 	}
 	for _, link := range *newAdsReq.Links {
+		if link == "" {
+			continue
+		}
 		_, err := url.ParseRequestURI(link)
 		if err != nil {
 			return errors.New(link + " doesn't look like a link")

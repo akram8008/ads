@@ -1,7 +1,5 @@
 package domain
 
-import "time"
-
 type AdsRequest struct {
 	Name        *string   `json:"name"`
 	Description *string   `json:"description"`
@@ -15,11 +13,4 @@ type AdsResponse struct {
 	Price       *float64  `json:"price,omitempty"`
 	Description *string   `json:"description,omitempty"`
 	Links       *[]string `json:"links,omitempty"`
-}
-
-type AllAdsResponse struct {
-	Name        string    `json:"name"`
-	MainLink    string    `json:"main_link"`
-	Price       float64   `json:"price"`
-	CreatedDate time.Time `json:"created_date"`
 }

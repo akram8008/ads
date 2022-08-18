@@ -43,14 +43,14 @@ func (h *handlers) Create(w http.ResponseWriter, r *http.Request) {
 	var newAdsReq domain.AdsRequest
 	err := json.NewDecoder(r.Body).Decode(&newAdsReq)
 	if err != nil {
-		resp.Set(http.StatusBadRequest, "Wrong ads domain in body request", err.Error())
+		resp.Set(http.StatusBadRequest, "Wrong ads model in body request", nil)
 		h.logger.Logger().Error(err)
 		return
 	}
 
 	if err = h.validateAds(newAdsReq); err != nil {
-		resp.Set(http.StatusBadRequest, "Validation error. Bad Ads - domain in body request.", err.Error())
-		h.logger.Logger().Error(fmt.Sprintf("Validation error. Bad Ads - domain in body request: %v Error: %v", newAdsReq, err.Error()))
+		resp.Set(http.StatusBadRequest, "Validation error: "+err.Error(), nil)
+		h.logger.Logger().Error(fmt.Sprintf("Validation error. Bad Ads - model in body request: %v Error: %v", newAdsReq, err.Error()))
 		return
 	}
 
@@ -86,7 +86,7 @@ func (h *handlers) GetAll(w http.ResponseWriter, r *http.Request) {
 
 	receivedAds, err := h.adsService.GetAll(page, price, createdDate)
 	if err != nil {
-		resp.Set(http.StatusInternalServerError, "Can not get all ads", nil)
+		resp.Set(http.StatusInternalServerError, "can not get all ads", nil)
 		h.logger.Logger().Error(err)
 		return
 	}
@@ -122,7 +122,7 @@ func (h *handlers) GetByID(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if err != nil {
-		resp.Set(http.StatusInternalServerError, "Can not get ads with id: "+idStr, nil)
+		resp.Set(http.StatusInternalServerError, "Can not get ads", nil)
 		h.logger.Logger().Error(err)
 		return
 	}

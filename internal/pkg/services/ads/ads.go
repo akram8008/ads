@@ -2,9 +2,9 @@ package ads
 
 import (
 	"ads/internal/domain"
+	"ads/internal/pkg/helper"
 	"ads/internal/pkg/logger"
 	"ads/internal/pkg/repositories/ads"
-	"ads/internal/pkg/services/helper"
 )
 
 type Services interface {

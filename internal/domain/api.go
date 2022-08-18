@@ -17,7 +17,6 @@ func (a *ApiResponse) Respond(w http.ResponseWriter) {
 	w.WriteHeader(a.Code)
 
 	resp, _ := json.Marshal(a)
-
 	w.Write(resp)
 }
 

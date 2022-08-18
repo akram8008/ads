@@ -4,7 +4,6 @@ import (
 	"ads/internal/pkg/db"
 	"ads/internal/pkg/logger"
 	"ads/internal/pkg/models"
-	"fmt"
 	"gorm.io/gorm"
 )
 
@@ -51,8 +50,6 @@ func (r *repository) GetAll(page int, price, createdDate string) ([]models.Ads, 
 
 	var ads []models.Ads
 	err := query.Find(&ads).Error
-
-	fmt.Println(page, price, createdDate)
 
 	return ads, err
 }

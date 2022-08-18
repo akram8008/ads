@@ -29,3 +29,16 @@ func New(paths []string) Logger {
 		logger: l.Sugar(),
 	}
 }
+func NewForTesting() Logger {
+	cfg := zap.NewProductionConfig()
+	cfg.OutputPaths = []string{}
+	cfg.ErrorOutputPaths = []string{}
+	l, err := cfg.Build()
+	if err != nil {
+		log.Fatalf("%v", err)
+	}
+
+	return &logger{
+		logger: l.Sugar(),
+	}
+}
